@@ -2,12 +2,15 @@ let N = 0
 let a = 0
 let b = 0
 input.onButtonPressed(Button.A, function () {
-    for (let N_0 = 0; N_0 <= 16; N_0++) {
-        N = N_0 + 1
-        燈號(N)
-        led.plot(a, b)
-        basic.pause(500)
-        N_0 += 1
+    while (!(input.buttonIsPressed(Button.B))) {
+        for (let N_0 = 0; N_0 <= 16; N_0++) {
+            N = N_0 + 1
+            燈號(N)
+            led.plot(a, b)
+            燈號(N - 1)
+            led.unplot(a, b)
+            basic.pause(100)
+        }
     }
 })
 function 燈號 (num: number) {
@@ -26,13 +29,14 @@ function 燈號 (num: number) {
     }
 }
 input.onButtonPressed(Button.B, function () {
-    for (let N_0 = 0; N_0 <= 16; N_0++) {
-        N = 18 - N_0
-        燈號(N)
-        led.plot(a, b)
-        basic.pause(500)
+    while (!(input.buttonIsPressed(Button.A))) {
+        for (let N_0 = 0; N_0 <= 16; N_0++) {
+            N = 18 - N_0
+            燈號(N - 1)
+            led.plot(a, b)
+            燈號(N)
+            led.unplot(a, b)
+            basic.pause(500)
+        }
     }
-})
-basic.forever(function () {
-	
 })
