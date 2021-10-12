@@ -63,7 +63,13 @@ input.onButtonPressed(Button.AB, function () {
         N = N_0 + 1
         燈號_25(N)
         led.plot(a, b)
-        basic.pause(100)
+        basic.pause(200)
+    }
+    for (let N_0 = 0; N_0 <= 24; N_0++) {
+        N = 25 - N_0
+        燈號_25(N)
+        led.unplot(a, b)
+        basic.pause(500)
     }
 })
 input.onButtonPressed(Button.B, function () {
